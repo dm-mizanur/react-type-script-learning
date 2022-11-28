@@ -53,11 +53,17 @@ function App() {
 
   const handleRestart = () => {
     setGameOver(true);
+    setNumber(0);
+    setAnswers((prev) => []);
   };
 
   return (
     <div className="App">
       {gameOver ? <button onClick={startQuiz}>Start</button> : null}
+
+      {answers.length === TOTAL_QUESTION ? (
+        <button onClick={handleRestart}>Restart</button>
+      ) : null}
 
       {!gameOver && !loading ? (
         <QuestionCard
@@ -70,6 +76,7 @@ function App() {
           handleAnswer={handleAnswer}
         />
       ) : null}
+      {loading ? <p>Please wait ...</p> : null}
       {!gameOver &&
       !loading &&
       answers.length === number + 1 &&
