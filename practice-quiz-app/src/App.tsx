@@ -61,7 +61,7 @@ function App() {
     <div className="App">
       {gameOver ? <button onClick={startQuiz}>Start</button> : null}
 
-      {answers.length === TOTAL_QUESTION ? (
+      {answers.length !== 0 ? (
         <button onClick={handleRestart}>Restart</button>
       ) : null}
 
